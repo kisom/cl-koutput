@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>CL-KOUTPUT by kisom</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>CL-KOUTPUT</h1>
+        <h2>Common Lisp library based on &quot;A System of Useful Output&quot;.</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/kisom/cl-koutput/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/kisom/cl-koutput/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/kisom/cl-koutput" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <p>CL-KOUTPUT is a Lisp library for outputting message as described in "<a href="http://kyleisom.net/blog/2012/08/16/system-of-output/">A
+System of Useful
+Output</a>". The
+name is a shortened version of "kyle's output", as I couldn't really
+come up with a better name.</p>
+
+<p>The library is fairly straightforward:</p>
+
+<div class="highlight"><pre><span class="p">(</span><span class="nv">info</span> <span class="s">"This is an information message."</span><span class="p">)</span>
+</pre></div>
+
+<p>would output</p>
+
+<pre><code>[+] This is an information message.
+</code></pre>
+
+<p>The syntax for all the forms is simple:</p>
+
+<div class="highlight"><pre><span class="p">(</span><span class="nb">defun</span> <span class="nv">level</span> <span class="p">(</span><span class="nv">message-string</span> <span class="k">&amp;optional</span> <span class="p">(</span><span class="nc">stream</span> <span class="no">nil</span><span class="p">)</span> <span class="k">&amp;rest</span> <span class="nv">args</span><span class="p">)</span>
+  <span class="o">...</span><span class="p">)</span>
+</pre></div>
+
+<p>The basic message forms are:</p>
+
+<ul>
+<li><code>info</code></li>
+<li><code>item</code></li>
+<li><code>dbg</code></li>
+<li><code>err</code></li>
+</ul><p>Note that since the names <code>error</code> and <code>debug</code> are reserved by the CL
+ANSI standard, alternative names have been chosen.</p>
+
+<p>You can change the default stream using <code>set-default-stream</code>:</p>
+
+<div class="highlight"><pre><span class="p">(</span><span class="nv">set-default-stream</span> <span class="no">nil</span><span class="p">)</span>
+</pre></div>
+
+<p>would set the default behaviour to return a string. You can use the
+<code>-default</code> forms to automatically use the default stream:</p>
+
+<div class="highlight"><pre><span class="p">(</span><span class="nv">info-default</span> <span class="nv">message-string</span> <span class="nv">foo</span> <span class="nv">bar</span> <span class="nv">baz</span><span class="p">)</span>
+</pre></div>
+
+<p>would write the message string (which in this case assumed three
+"~A"s) to a string (assuming the previous <code>set-default-stream</code>
+invocation). For example,</p>
+
+<div class="highlight"><pre><span class="nv">CL-USER&gt;</span> <span class="p">(</span><span class="nv">koutput:set-default-stream</span> <span class="no">nil</span><span class="p">)</span>
+<span class="no">NIL</span>
+<span class="nv">CL-USER&gt;</span> <span class="p">(</span><span class="nv">koutput:info-default</span> <span class="s">"Hello ~A"</span> <span class="s">"kyle"</span><span class="p">)</span>
+<span class="s">"[+] Hello kyle"</span>
+</pre></div>
+
+<p>The functions reside under the 'koutput' package. If placed in the Quicklisp 
+local projects directory, it can be loaded from Quicklisp:</p>
+
+<div class="highlight"><pre><span class="p">(</span><span class="nv">ql:quickload</span> <span class="ss">:cl-koutput</span><span class="p">)</span>
+</pre></div>
+
+<p>and the functions accessed via the <code>koutput</code> package.</p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
