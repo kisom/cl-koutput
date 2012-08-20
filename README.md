@@ -2,8 +2,11 @@ KOUTPUT
 
 This is a Lisp library for outputting message as described in "[A
 System of Useful
-Output](http://kyleisom.net/blog/2012/08/16/system-of-output/)". It is
-fairly simple:
+Output](http://kyleisom.net/blog/2012/08/16/system-of-output/)". The
+name is a shortened version of "kyle's output", as I couldn't really
+come up with a better name.
+
+The library is fairly straightforward:
 
     (info "This is an information message.")
 
@@ -38,4 +41,6 @@ would set the default behaviour to return a string. You can use the
 would write the message string (which in this case assumed three
 "~A"s) to a string (assuming the previous `set-default-stream`
 invocation).
+
+The functions reside under the 'koutput' package.
 
