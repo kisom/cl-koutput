@@ -1,8 +1,8 @@
 ;;;; koutput.asd
 
-(asdf:defsystem #:koutput
+(asdf:defsystem #:cl-koutput
   :serial t
-  :description "Describe koutput here"
+  :description "A system of useful output."
   :author "Kyle Isom <coder@kyleisom.net>"
   :license "ISC license"
   :components ((:file "package")
